@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El pasquín de Salta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #26a69a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #004d40;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #00796b;
+        }
+        .container {
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        footer {
+            background-color: #26a69a;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .chat {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background-color: #004d40;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .chat-button {
+            background-color: #26a69a;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .chat-box {
+            display: none;
+            background-color: #fff;
+            border: 1px solid #004d40;
+            border-radius: 5px;
+            width: 300px;
+            height: 400px;
+            position: fixed;
+            bottom: 130px;
+            right: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .chat-header {
+            background-color: #004d40;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .chat-messages {
+            padding: 10px;
+            height: 300px;
+            overflow-y: auto;
+            background-color: #f1f1f1;
+        }
+        .chat-input {
+            padding: 10px;
+            border-top: 1px solid #004d40;
+        }
+        .chat-input input {
+            width: calc(100% - 60px);
+            padding: 5px;
+        }
+        .chat-input button {
+            width: 50px;
+            background-color: #26a69a;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>El pasquín de Salta</h1>
+    </header>
+    <nav>
+        <a href="#noticias">Noticias</a>
+        <a href="#opiniones">Opiniones</a>
+        <a href="#politica">Política</a>
+        <a href="#medioambiente">Medio Ambiente</a>
+        <a href="#agrarias">Agrarias</a>
+        <a href="#publicidad">Publicidad</a>
+    </nav>
+    <div class="container">
+        <div id="noticias" class="section">
+            <h2>Noticias</h2>
+            <p>Últimas noticias sobre Salta y el mundo.</p>
+        </div>
+        <div id="opiniones" class="section">
+            <h2>Opiniones</h2>
+            <p>Artículos de opinión de diversos colaboradores.</p>
+        </div>
+        <div id="politica" class="section">
+            <h2>Política</h2>
+            <p>Notas y análisis sobre la política local y nacional.</p>
+        </div>
+        <div id="medioambiente" class="section">
+            <h2>Medio Ambiente</h2>
+            <p>Noticias y artículos sobre el cuidado del medio ambiente.</p>
+        </div>
+        <div id="agrarias" class="section">
+            <h2>Agrarias</h2>
+            <p>Información y novedades del sector agrario.</p>
+        </div>
+        <div id="publicidad" class="section">
+            <h2>Publicidad</h2>
+            <p>Anuncios y espacios publicitarios.</p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 El pasquín de Salta</p>
+    </footer>
+    <div class="chat">
+        <button class="chat-button" onclick="toggleChat()">Chat en línea</button>
+        <div class="chat-box" id="chatBox">
+            <div class="chat-header">
+                <h3>Chat en línea</h3>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <!-- Mensajes del chat aparecerán aquí -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="Escribe tu mensaje...">
+                <button onclick="sendMessage()">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleChat() {
+            var chatBox = document.getElementById('chatBox');
+            if (chatBox.style.display === 'none' || chatBox.style.display === '') {
+                chatBox.style.display = 'block';
+            } else {
+                chatBox.style.display = 'none';
+            }
+        }
+
+        function sendMessage() {
+            var input = document.getElementById('chatInput');
+            var messages = document.getElementById('chatMessages');
+
+            if (input.value.trim() !== '') {
+                var message = document.createElement('p');
+                message.textContent = input.value;
+                messages.appendChild(message);
+                input.value = '';
+                messages.scrollTop = messages.scrollHeight;
+            }
+        }
+    </script>
+</body>
+</html>
